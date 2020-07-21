@@ -1,12 +1,12 @@
 import RPi.GPIO as GPIO
 #useless edit so I can push again
 
-red_front = 13
-green_front = 6
+red_front = 16
+green_front = 20
 blue_front = 27
 
 red_back = 22
-green_back = 5
+green_back = 21
 blue_back = 17
 
 GPIO.setwarnings(False)
@@ -58,30 +58,9 @@ def off(location):
 		red = red_back
 		blue = blue_back
 		green = green_back
-
 	GPIO.output(red,GPIO.LOW)
 	GPIO.output(green,GPIO.LOW)
 	GPIO.output(blue,GPIO.LOW)
-
-def set(location,color):
-    if location == "Front":
-        red_off = red_front
-        blue_off = blue_front
-        green_off = green_front
-    if location == "Back":
-        red_off = red_back
-        blue_off = blue_back
-        green_off = green_back
-    if location == "Both":
-        GPIO.output(red_front, GPIO.LOW)
-        GPIO.output(green_front, GPIO.LOW)
-        GPIO.output(blue_front, GPIO.LOW)
-        red_off = red_back
-        blue_off = blue_back
-        green_off = green_back
-    GPIO.output(red_off, GPIO.LOW)
-    GPIO.output(green_off,GPIO.LOW)
-    GPIO.output(blue_off,GPIO.LOW)
 def purple(red,blue,green):
     GPIO.output(red,GPIO.HIGH)
     GPIO.output(green,GPIO.LOW)
