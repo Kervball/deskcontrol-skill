@@ -39,6 +39,16 @@ def yellow(red,blue,green):
     GPIO.output(red,GPIO.HIGH)
     GPIO.output(green,GPIO.HIGH)
     GPIO.output(blue,GPIO.LOW)
+def purple(red,blue,green):
+    GPIO.output(red,GPIO.HIGH)
+    GPIO.output(green,GPIO.LOW)
+    GPIO.output(blue,GPIO.HIGH)
+def teal(red,blue,green):
+    GPIO.output(red,GPIO.LOW)
+    GPIO.output(green,GPIO.HIGH)
+    GPIO.output(blue,GPIO.HIGH)
+#----------------------------------------------------
+#-----------turn off lights function
 def off(location):
     if location == "Front":
         red_off = red_front
@@ -58,16 +68,7 @@ def off(location):
     GPIO.output(red_off, GPIO.LOW)
     GPIO.output(green_off,GPIO.LOW)
     GPIO.output(blue_off,GPIO.LOW)
-def purple(red,blue,green):
-    GPIO.output(red,GPIO.HIGH)
-    GPIO.output(green,GPIO.LOW)
-    GPIO.output(blue,GPIO.HIGH)
-def teal(red,blue,green):
-    GPIO.output(red,GPIO.LOW)
-    GPIO.output(green,GPIO.HIGH)
-    GPIO.output(blue,GPIO.HIGH)
-
-
+#----------set color fucntion
 def set(location, color):
     if location == "Front":
         if color == "red":
