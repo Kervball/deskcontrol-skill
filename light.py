@@ -40,7 +40,6 @@ def yellow(red,blue,green):
     GPIO.output(green,GPIO.HIGH)
     GPIO.output(blue,GPIO.LOW)
 def off(location):
-<<<<<<< HEAD
 	if location == "Front":
 		red = red_front
 		blue = blue_front
@@ -56,14 +55,12 @@ def off(location):
 		red = red_back
 		blue = blue_back
 		green = green_back
-<<<<<<< HEAD
 
 	GPIO.output(red,GPIO.LOW)
 	GPIO.output(green,GPIO.LOW)
 	GPIO.output(blue,GPIO.LOW)
-=======
-    GPIO.output(red,GPIO.LOW)
-=======
+
+def set(location,color):
     if location == "Front":
         red = red_front
         blue = blue_front
@@ -80,10 +77,9 @@ def off(location):
         blue = blue_back
         green = green_back
     GPIO.output(red, GPIO.LOW)
->>>>>>> 0afe602b8784486425384fa69c73a05508687817
     GPIO.output(green,GPIO.LOW)
     GPIO.output(blue,GPIO.LOW)
->>>>>>> 4bc84e1045465d6a7599f62c7f64a3f976c84f1d
+
 def purple(red,blue,green):
     GPIO.output(red,GPIO.HIGH)
     GPIO.output(green,GPIO.LOW)
