@@ -7,10 +7,6 @@ class Deskcontrol(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
 
-    @intent_file_handler('deskcontroltest.intent')
-    def handle_deskcontrol(self, message):
-        self.speak_dialog('deskcontrol')
-
     @intent_handler(IntentBuilder("colorChangeIntent").require("location").require("color"))
     def handle_turn_on_lights_intent(self, message):
         if message.data["location"].upper() == "FRONT LIGHTS":

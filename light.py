@@ -40,6 +40,9 @@ def yellow(red,blue,green):
     GPIO.output(green,GPIO.HIGH)
     GPIO.output(blue,GPIO.LOW)
 def off(location):
+	red = 0
+	blue = 0
+	green = 0
 	if location == "Front":
 		red = red_front
 		blue = blue_front
@@ -50,8 +53,8 @@ def off(location):
 		green = green_back
 	if location == "Both":
 		GPIO.output(red_front,GPIO.LOW)
-	    	GPIO.output(green_front,GPIO.LOW)
 		GPIO.output(blue_front,GPIO.LOW)
+		GPIO.output(green_front,GPIO.LOW)
 		red = red_back
 		blue = blue_back
 		green = green_back
