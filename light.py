@@ -19,26 +19,25 @@ GPIO.setup(blue_front,GPIO.OUT)
 
 #color functions----------------------------------------
 def white(red,blue,green):
-     GPIO.output(red,GPIO.HIGH)
-     GPIO.output(blue,GPIO.HIGH)
-     GPIO.output(green,GPIO.HIGH)
-     print("white")
+    GPIO.output(red,GPIO.HIGH)
+    GPIO.output(blue,GPIO.HIGH)
+    GPIO.output(green,GPIO.HIGH)
 def red(red,blue,green):
-     GPIO.output(red,GPIO.HIGH)
-     GPIO.output(blue,GPIO.LOW)
-     GPIO.output(green,GPIO.LOW)
+    GPIO.output(red,GPIO.HIGH)
+    GPIO.output(blue,GPIO.LOW)
+    GPIO.output(green,GPIO.LOW)
 def blue(red,blue,green):
-     GPIO.output(red,GPIO.LOW)
-     GPIO.output(green,GPIO.LOW)
-     GPIO.output(blue,GPIO.HIGH)
+    GPIO.output(red,GPIO.LOW)
+    GPIO.output(green,GPIO.LOW)
+    GPIO.output(blue,GPIO.HIGH)
 def green(red,blue,green):
-     GPIO.output(red,GPIO.LOW)
-     GPIO.output(green,GPIO.HIGH)
-     GPIO.output(blue,GPIO.LOW)
+    GPIO.output(red,GPIO.LOW)
+    GPIO.output(green,GPIO.HIGH)
+    GPIO.output(blue,GPIO.LOW)
 def yellow(red,blue,green):
-     GPIO.output(red,GPIO.HIGH)
-     GPIO.output(green,GPIO.HIGH)
-     GPIO.output(blue,GPIO.LOW)
+    GPIO.output(red,GPIO.HIGH)
+    GPIO.output(green,GPIO.HIGH)
+    GPIO.output(blue,GPIO.LOW)
 def off(location):
 	if location == "Front":
 		red = red_front
@@ -55,7 +54,6 @@ def off(location):
 		red = red_back
 		blue = blue_back
 		green = green_back
-
     GPIO.output(red,GPIO.LOW)
     GPIO.output(green,GPIO.LOW)
     GPIO.output(blue,GPIO.LOW)
