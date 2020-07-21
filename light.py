@@ -54,10 +54,16 @@ def off(location):
 		red = red_back
 		blue = blue_back
 		green = green_back
+<<<<<<< HEAD
 
 	GPIO.output(red,GPIO.LOW)
 	GPIO.output(green,GPIO.LOW)
 	GPIO.output(blue,GPIO.LOW)
+=======
+    GPIO.output(red,GPIO.LOW)
+    GPIO.output(green,GPIO.LOW)
+    GPIO.output(blue,GPIO.LOW)
+>>>>>>> 4bc84e1045465d6a7599f62c7f64a3f976c84f1d
 def purple(red,blue,green):
     GPIO.output(red,GPIO.HIGH)
     GPIO.output(green,GPIO.LOW)
