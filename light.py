@@ -8,6 +8,16 @@ blue_front = 27
 red_back = 22
 green_back = 21
 blue_back = 17
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(red_back,GPIO.OUT)
+GPIO.setup(green_back,GPIO.OUT)
+GPIO.setup(blue_back,GPIO.OUT)
+GPIO.setup(red_front,GPIO.OUT)
+GPIO.setup(green_front,GPIO.OUT)
+GPIO.setup(blue_front,GPIO.OUT)
+
 def setup():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
