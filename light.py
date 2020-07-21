@@ -70,7 +70,7 @@ def off(location)
     GPIO.output(blue_off,GPIO.LOW)
 #----------set color fucntion
 def set(location, color):
-    if location == "Front":
+    if location == "FRONT LIGHTS":
         if color == "red":
             red(red_front, blue_front, green_front)
         elif color == "blue":
@@ -85,7 +85,7 @@ def set(location, color):
             yellow(red_front, blue_front, green_front)
         elif color == "teal":
             teal(red_front, blue_front, green_front)
-    elif location == "Back":
+    elif location == "BACK LIGHTS":
         if color == "red":
             red(red_back, blue_back, green_back)
         elif color == "blue":
@@ -100,7 +100,7 @@ def set(location, color):
             yellow(red_back, blue_back, green_back)
         elif color == "teal":
             teal(red_back, blue_back, green_back)
-    elif location == "Both":
+    elif location == "BOTH LIGHTS":
         if color == "red":
             red(red_front, blue_front, green_front)
             red(red_back, blue_back, green_back)

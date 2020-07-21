@@ -22,7 +22,7 @@ class Deskcontrol(MycroftSkill):
 
     @intent_handler(IntentBuilder("").require('powerOff').require('location'))
     def handle_turn_off_lights_intent(self, message):
-        light.off(message.data['location'])
+        light.off(message.data['location'].upper())
         self.speak_dialog('deskcontrol')
 
 def create_skill():
