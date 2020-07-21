@@ -51,15 +51,15 @@ def teal(red,blue,green):
 #-----------turn off lights function
 def off(location):
     setup()
-    if location == "Front":
+    if location == "FRONT LIGHTS":
         red_off = red_front
         blue_off = blue_front
         green_off = green_front
-    if location == "Back":
+    if location == "BACK LIGHTS":
         red_off = red_back
         blue_off = blue_back
         green_off = green_back
-    if location == "Both":
+    if location == "BOTH LIGHTS":
         GPIO.output(red_front, GPIO.LOW)
         GPIO.output(green_front, GPIO.LOW)
         GPIO.output(blue_front, GPIO.LOW)
