@@ -10,13 +10,13 @@ class Deskcontrol(MycroftSkill):
     @intent_handler(IntentBuilder("colorChangeIntent").require("location").require("color"))
     def handle_turn_on_lights_intent(self, message):
         if message.data["location"].upper() == "FRONT LIGHTS":
-            light.set("Front", message.data['color'])
+            light.set(message.data["location"].upper(), message.data['color'])
 
         if message.data["location"].upper() == "BACK LIGHTS":
-            light.set("Back", message.data['color'])
+            light.set(message.data["location"].upper(), message.data['color'])
 
         if message.data["location"].upper() == "BOTH LIGHTS":
-            light.set("Both", message.data['color'])
+            light.set(message.data["location"].upper(), message.data['color'])
 
         self.speak_dialog('deskcontrol')
 
