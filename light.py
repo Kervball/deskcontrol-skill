@@ -1,6 +1,6 @@
-import RPi.GPIO as GPIO
-#useless edit so I can push again
+import wiringpi
 
+#give pin numbers (the set up I run uses the GPIO pin numbering )
 red_front = 16
 green_front = 20
 blue_front = 27
@@ -9,54 +9,74 @@ red_back = 22
 green_back = 21
 blue_back = 17
 
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(red_back,GPIO.OUT)
-GPIO.setup(green_back,GPIO.OUT)
-GPIO.setup(blue_back,GPIO.OUT)
-GPIO.setup(red_front,GPIO.OUT)
-GPIO.setup(green_front,GPIO.OUT)
-GPIO.setup(blue_front,GPIO.OUT)
+wiringpi.wiringPiSetupGpio() #this comand tells the program to use the GPIO pinout
+
+#these comands set up each pin as outputs
+# 1 = output 0 = input
+wiringpi.pinMode(red_back, 1)
+wiringpi.pinMode(blue_back, 1)
+wiringpi.pinMode(green_back, 1)
+wiringpi.pinMode(red_front, 1)
+wiringpi.pinMode(blue_front, 1)
+wiringpi.pinMode(green_front, 1)
+
+#thest comands create the ablity for PWM on each pin with the range of each
+wiringpi.softPwmCreate(red_front, 0, 100)
+wiringpi.softPwmCreate(blue_front, 0, 100)
+wiringpi.softPwmCreate(green_front, 0, 100)
+wiringpi.softPwmCreate(red_back, 0, 100)
+wiringpi.softPwmCreate(blue_back, 0, 100)
+wiringpi.softPwmCreate(green_back, 0, 100)
 
 def setup():
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(red_back,GPIO.OUT)
-    GPIO.setup(green_back,GPIO.OUT)
-    GPIO.setup(blue_back,GPIO.OUT)
-    GPIO.setup(red_front,GPIO.OUT)
-    GPIO.setup(green_front,GPIO.OUT)
-    GPIO.setup(blue_front,GPIO.OUT)
+    wiringpi.wiringPiSetupGpio()
+
+    wiringpi.pinMode(red_back, 1)
+    wiringpi.pinMode(blue_back, 1)
+    wiringpi.pinMode(green_back, 1)
+    wiringpi.pinMode(red_front, 1)
+    wiringpi.pinMode(blue_front, 1)
+    wiringpi.pinMode(green_front, 1)
+
+    wiringpi.softPwmCreate(red_front, 0, 100)
+    wiringpi.softPwmCreate(blue_front, 0, 100)
+    wiringpi.softPwmCreate(green_front, 0, 100)
+    wiringpi.softPwmCreate(red_back, 0, 100)
+    wiringpi.softPwmCreate(blue_back, 0, 100)
+    wiringpi.softPwmCreate(green_back, 0, 100)
 
 #color functions----------------------------------------
+ON = 1
+OFF = 0
+
 def white(red,blue,green):
-    GPIO.output(red,GPIO.HIGH)
-    GPIO.output(blue,GPIO.HIGH)
-    GPIO.output(green,GPIO.HIGH)
+    wiringpi.softPwmWrite(red, ON)
+    wiringpi.softPwmWrite(green, ON)
+    wiringpi.softPwmWrite(blue, ON)
 def red(red,blue,green):
-    GPIO.output(red,GPIO.HIGH)
-    GPIO.output(blue,GPIO.LOW)
-    GPIO.output(green,GPIO.LOW)
+    wiringpi.softPwmWrite(red, ON)
+    wiringpi.softPwmWrite(green, ON)
+    wiringpi.softPwmWrite(blue, ON)
 def blue(red,blue,green):
-    GPIO.output(red,GPIO.LOW)
-    GPIO.output(green,GPIO.LOW)
-    GPIO.output(blue,GPIO.HIGH)
+    wiringpi.softPwmWrite(red, ON)
+    wiringpi.softPwmWrite(green, ON)
+    wiringpi.softPwmWrite(blue, ON)
 def green(red,blue,green):
-    GPIO.output(red,GPIO.LOW)
-    GPIO.output(green,GPIO.HIGH)
-    GPIO.output(blue,GPIO.LOW)
+    wiringpi.softPwmWrite(red, ON)
+    wiringpi.softPwmWrite(green, ON)
+    wiringpi.softPwmWrite(blue, ON)
 def yellow(red,blue,green):
-    GPIO.output(red,GPIO.HIGH)
-    GPIO.output(green,GPIO.HIGH)
-    GPIO.output(blue,GPIO.LOW)
+    wiringpi.softPwmWrite(red, ON)
+    wiringpi.softPwmWrite(green, ON)
+    wiringpi.softPwmWrite(blue, ON)
 def purple(red,blue,green):
-    GPIO.output(red,GPIO.HIGH)
-    GPIO.output(green,GPIO.LOW)
-    GPIO.output(blue,GPIO.HIGH)
+    wiringpi.softPwmWrite(red, ON)
+    wiringpi.softPwmWrite(green, ON)
+    wiringpi.softPwmWrite(blue, ON)
 def teal(red,blue,green):
-    GPIO.output(red,GPIO.LOW)
-    GPIO.output(green,GPIO.HIGH)
-    GPIO.output(blue,GPIO.HIGH)
+    wiringpi.softPwmWrite(red, ON)
+    wiringpi.softPwmWrite(green, ON)
+    wiringpi.softPwmWrite(blue, ON)
 #----------------------------------------------------
 #-----------turn off lights function
 def off(location):
@@ -133,3 +153,13 @@ def set(location, color):
         elif color == "teal":
             teal(red_front, blue_front, green_front)
             teal(red_back, blue_back, green_back)
+#---------------------fade functions
+def fade(front,back):
+        for brightness in range(0,100):
+            wiringpi.softPwmWrite(front, brightness)
+            wiringpi.softPwmWrite(back, brightness)
+            wiringpi.delay(15)
+        for brightness in reversed(range(0,100)):
+            wiringpi.softPwmWrite(front, brightness)
+            wiringpi.softPwmWrite(back, brightness)
+            wiringpi.delay(15)
